@@ -1,13 +1,17 @@
 Source: cvmfs-config-osg
 Maintainer: Dave Dykstra <dwd@fnal.gov>
-Section: config
+Section: utils
 Priority: extra
-Standards-Version: 3.9.3.1
-Build-Depends: debhelper (>= 9) 
+Standards-Version: 3.9.6
+Build-Depends: debhelper (>= 9), dh-systemd
 Homepage: http://github.conf/opensciencegrid/cvmfs-config-osg
 
 Package: cvmfs-config-osg
 Architecture: all
+Depends: ${misc:Depends}, autofs (>= 5.1.2)
 Provides: cvmfs-config
 Conflicts: cvmfs-config
-Description: CernVM File System configuration for OSG
+Description: CernVM File System configuration for Open Science Grid
+ The CernVM File System is a client for accessing remote file systems
+ using HTTP. This package provides the necessary configuration for
+ accessing filesystems maintained by the Open Science Grid.
