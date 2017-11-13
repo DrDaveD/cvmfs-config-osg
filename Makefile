@@ -17,12 +17,8 @@ install-common:
 	install -D -m 444 opensciencegrid.org.pub $(DESTDIR)/etc/cvmfs/keys/opensciencegrid.org
 
 install-debian: install-common
-	mkdir -p $(DESTDIR)/lib/systemd/system \
-	  $(DESTDIR)/lib/systemd/system/autofs.service.wants \
-	  $(DESTDIR)/usr/sbin
-	install -D -m 444 cvmfs-config-osg.service $(DESTDIR)/lib/systemd/system
-	ln -s ../cvmfs-config-osg.service $(DESTDIR)/lib/systemd/system/autofs.service.wants/cvmfs-config-osg.service
-	install -D -m 555 cvmfs-config-osgd $(DESTDIR)/usr/sbin
+	mkdir -p $(DESTDIR)/etc/auto.master.d
+	install -D -m 0644 cvmfs.autofs $(DESTDIR)/etc/auto.master.d
 
 # assume DESTDIR=$RPM_BUILD_ROOT is passed in
 install-redhat: install-common
